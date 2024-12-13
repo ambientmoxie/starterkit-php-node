@@ -1,0 +1,26 @@
+{
+  "name": "starterkit-php-node",
+  "description": "starterkit/php-node",
+  "type": "module",
+  "scripts": {
+    "vite": "vite",
+    "server": "php -S 0.0.0.0:8000 router.php", 
+    "predev": "node setEnv.mjs",
+    "dev": "concurrently \"npm:server\" \"npm:vite\" -c yellow,green",
+    "prebuild": "node setEnv.mjs",
+    "build": "vite build",
+    "preview": "concurrently \"npm:build\" \"npm:server\" -c yellow,green"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "normalize.css": "^8.0.1",
+    "sass": "^1.68.0",
+    "vite": "^5.4.10"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.0",
+    "dotenv": "^16.4.5"
+  }
+}
