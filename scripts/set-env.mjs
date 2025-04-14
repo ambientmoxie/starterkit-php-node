@@ -34,9 +34,12 @@ function updateEnvFile(filePath, key, value) {
 const scriptName = process.env.npm_lifecycle_event;
 
 // Set VITE_DEV to true only for `dev`, false otherwise
-const isDevMode = scriptName === "dev";
+const isDevMode = scriptName === "dev" || scriptName === "host";
 updateEnvFile(envFilePath, "VITE_DEV", isDevMode.toString());
 
 // Update the local IP (network testing)
 const localIp = getLocalIp();
 updateEnvFile(envFilePath, "VITE_LOCAL_IP", localIp);
+
+// Update environment mode variable
+updateEnvFile(envFilePath, "VITE_ENV_MODE", scriptName);
