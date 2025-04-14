@@ -7,10 +7,11 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { getLocalIp } from "./get-ip.js";
 
 const __filename = fileURLToPath(import.meta.url); // Gets the full path of the current file
 const __dirname = path.dirname(__filename);        // Gets the directory path of the current file
-const envFilePath = path.join(__dirname, ".env");  // Creates a valid path to the .env file by joining path segments
+const envFilePath = path.join(__dirname, "../.env");  // Creates a valid path to the .env file by joining path segments
 
 // Reads a file and returns its content
 function readFileContent(filePath) {
@@ -47,3 +48,6 @@ const viteDevValue = process.env.npm_lifecycle_event === "predev" ? "true" : "fa
 
 // Update the .env file with the appropriate value for VITE_DEV
 updateEnvFile(envFilePath, "VITE_DEV", viteDevValue);
+// Update the .env file with the appropriate value for VITE_IP
+const localIp = getLocalIp();
+updateEnvFile(envFilePath, "VITE_LOCAL_IP", localIp);

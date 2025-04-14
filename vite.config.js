@@ -20,7 +20,7 @@ export default defineConfig({
   },
   server: {
     host: true,
-    origin: `http://${process.env.VITE_DEV_SERVER_IP}:3000`,
+    origin: `http://${process.env.VITE_DEV}:3000`,
     port: 3000,
     hot: true,
   },
