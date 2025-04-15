@@ -9,8 +9,6 @@ const isDev = process.env.VITE_ENV_MODE === "dev";
 const isHost = process.env.VITE_ENV_MODE === "host";
 
 export default defineConfig({
-  root: ".",
-
   // Set base path for built assets (used in production)
   base: isDev || isHost ? "" : "/build/bundle",
 
