@@ -29,13 +29,14 @@ class AssetHelper
         $manifest = json_decode(file_get_contents($manifestPath), true);
         if (!$manifest) throw new Exception("Failed to decode manifest file.");
 
+        $entry = "src/js/main.js";
         // Attempts to access the key and throws an error if it is not found.
-        if (!isset($manifest["assets/js/main.js"])) throw new Exception("Static files array is not found in manifest.");
+        if (!isset($manifest[$entry])) throw new Exception("Static files array is not found in manifest.");
 
         // Assign a value to $assetPath by checking the value of $type argument.
         $assetPath = $type === "js"
-            ? '/assets/bundle/' . $manifest["assets/js/main.js"]['file']
-            : '/assets/bundle/' . $manifest["assets/js/main.js"]['css'][0] ?? null;
+            ? '/build/bundle/' . $manifest[$entry]['file']
+            : '/build/bundle/' . ($manifest[$entry]['css'][0] ?? '');
 
         // Throws an error if no value has been assigned to $assetPath.
         if (!$assetPath) throw new Exception("Asset path for type '$type' not found.");
