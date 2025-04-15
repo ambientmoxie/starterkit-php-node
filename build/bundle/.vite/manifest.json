@@ -1,11 +1,23 @@
 {
+  "src/fonts/PicNic.woff": {
+    "file": "PicNic-CyMM2V_9.woff",
+    "src": "src/fonts/PicNic.woff"
+  },
+  "src/fonts/PicNic.woff2": {
+    "file": "PicNic-H2ebeMMj.woff2",
+    "src": "src/fonts/PicNic.woff2"
+  },
   "src/js/main.js": {
-    "file": "main-BphXuxlO.js",
+    "file": "main-BKCH-Xai.js",
     "name": "main",
     "src": "src/js/main.js",
     "isEntry": true,
     "css": [
-      "main-DskfFsMG.css"
+      "main-C86GE4ey.css"
+    ],
+    "assets": [
+      "PicNic-H2ebeMMj.woff2",
+      "PicNic-CyMM2V_9.woff"
     ]
   }
 }

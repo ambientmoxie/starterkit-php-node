@@ -31,4 +31,11 @@ export default defineConfig({
     outDir: "./build/bundle",
     emptyOutDir: true,
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler'
+      }
+    }
+  }
 });
