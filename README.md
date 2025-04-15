@@ -20,6 +20,8 @@ To use this starter, you’ll need:
 - 🐘 Native PHP with custom router and environment setup
 - 📦 Simple production build output (`build/`)
 - 🔁 Hot Module Replacement (HMR) and full reload support for PHP file changes
+- 🧭 Clean URL routing: /about loads pages/about.php (no .php in the URL)
+- 🧩 Separate router.php and index.php logic for development vs production
 
 ---
 
@@ -75,14 +77,35 @@ To use this starter, you’ll need:
 
 ---
 
-## 5 – Notes
+## 5 – Routing Logic
+
+### `router.php` (development only)
+
+Used with PHP’s built-in server. Serves static files if they exist, otherwise forwards the request to `index.php`.
+
+Examples:
+- `/build/bundle/main.js` → served directly  
+- `/contact` → forwarded to `index.php`
+
+### `index.php` (dev and production)
+
+Parses the URL and loads the matching file from `pages/`. If not found, loads `pages/404.php`.
+
+Examples:
+- `/` → `pages/home.php`  
+- `/about` → `pages/about.php`  
+- `/invalid` → `pages/404.php`
+
+---
+
+## 6 – Notes
 
 - The `base` path in `vite.config.js` must match the public path where assets will be deployed (`/build/bundle`).
 - `router.php` ensures fonts and other static files are properly served during local preview.
 
 ---
 
-## 6 – Disclaimer
+## 7 – Disclaimer
 
 - This is a work-in-progress starter setup and is not guaranteed to be bug-free.
 - You can use it for both personal and commercial projects. Feel free to adapt it to your needs.
