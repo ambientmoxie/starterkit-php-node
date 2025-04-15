@@ -4,7 +4,7 @@ A lightweight PHP/Node setup using Vite for modern front-end tooling and a PHP b
 
 ---
 
-## ✅ Prerequisites
+## 1 – Prerequisites
 
 To use this starter, you’ll need:
 
@@ -14,7 +14,7 @@ To use this starter, you’ll need:
 
 ---
 
-## 🚀 Features
+## 2 – Features
 
 - ⚡ Vite-powered bundling for JS, SCSS, and fonts
 - 🐘 Native PHP with custom router and environment setup
@@ -23,7 +23,7 @@ To use this starter, you’ll need:
 
 ---
 
-## 📂 Project Structure
+## 3 – Project Structure
 
     ├── .env                    # Environment variables
     ├── .env-example            # Sample .env for local setup
@@ -47,7 +47,7 @@ To use this starter, you’ll need:
 
 
 
-## 🛠 Setup
+## 4 – Setup
 
 1. **Install dependencies**
 
@@ -75,14 +75,14 @@ To use this starter, you’ll need:
 
 ---
 
-## ⚠️ Notes
+## 5 – Notes
 
 - The `base` path in `vite.config.js` must match the public path where assets will be deployed (`/build/bundle`).
 - `router.php` ensures fonts and other static files are properly served during local preview.
 
 ---
 
-## 📌 Disclaimer
+## 6 – Disclaimer
 
 - This is a work-in-progress starter setup and is not guaranteed to be bug-free.
 - You can use it for both personal and commercial projects. Feel free to adapt it to your needs.
