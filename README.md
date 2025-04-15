@@ -19,7 +19,7 @@ To use this starter, you’ll need:
 - ⚡ Vite-powered bundling for JS, SCSS, and fonts
 - 🐘 Native PHP with custom router and environment setup
 - 📦 Simple production build output (`build/`)
-- 🔁 Full reload support for PHP file changes 
+- 🔁 Hot Module Replacement (HMR) and full reload support for PHP file changes
 
 ---
 
