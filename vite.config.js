@@ -9,7 +9,7 @@ const isHost = process.env.VITE_ENV_MODE === "host";
 
 export default defineConfig({
   root: ".",
-  base: isDev || isHost ? "" : "/assets/bundle",
+  base: isDev || isHost ? "" : "/build/bundle",
   server: {
     host: isHost ? true : "localhost",
     origin: isHost
@@ -20,6 +20,7 @@ export default defineConfig({
   },
   plugins: [fullReload(["**/*.php"])],
   build: {
+    assetsInlineLimit: 0,
     rollupOptions: {
       input: "./src/js/main.js",
       output: {
@@ -34,8 +35,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler'
-      }
-    }
-  }
+        api: "modern-compiler",
+      },
+    },
+  },
 });
