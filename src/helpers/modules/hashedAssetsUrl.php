@@ -22,7 +22,7 @@ class AssetHelper
         // Resolving the root folder
         $subfolder = $_ENV['VITE_ROOT'] ?? '';
         // Finding the correct path to manifest.json and throwing an error if not found
-        $manifestPath = $_SERVER['DOCUMENT_ROOT'] . $subfolder . '/assets/bundle/.vite/manifest.json';
+        $manifestPath = $_SERVER['DOCUMENT_ROOT'] . $subfolder . '/build/bundle/.vite/manifest.json';
         if (!file_exists($manifestPath)) throw new Exception("Manifest file not found at path: $manifestPath");
 
         // Attempts to read the file and throws an error if it fails.

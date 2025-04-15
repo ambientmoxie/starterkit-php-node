@@ -18,19 +18,17 @@ export default defineConfig({
     port: 3000,
     hot: true,
   },
-  plugins: [
-    fullReload(["**/*.php"]),
-  ],
+  plugins: [fullReload(["**/*.php"])],
   build: {
     rollupOptions: {
-      input: "./assets/js/main.js",
+      input: "./src/js/main.js",
       output: {
         entryFileNames: "[name]-[hash].js",
         assetFileNames: "[name]-[hash][extname]",
       },
     },
     manifest: true,
-    outDir: "./assets/bundle",
+    outDir: "./build/bundle",
     emptyOutDir: true,
   },
 });
