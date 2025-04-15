@@ -5,14 +5,14 @@
   "scripts": {
     "vite:local": "vite --config vite.local.config.js",
     "vite:host": "vite --config vite.host.config.js",
-    "server:local": "php -S localhost:8000 router.php",
-    "server:host": "php -S $(node scripts/get-ip.mjs):8000 router.php",
+    "server:local": "php -S localhost:8888 router.php",
+    "server:host": "php -S $(node scripts/get-ip.mjs):8888 router.php",
 
     "dev": "node scripts/set-env.mjs && concurrently \"npm:server:local\" \"npm:vite:local\" -c yellow,green",
     "host": "node scripts/set-env.mjs && concurrently \"npm:server:host\" \"npm:vite:host\" -c yellow,green",
 
     "build": "node scripts/set-env.mjs && vite build",
-    "preview": "concurrently \"npm run build\" \"npm run server\" -c yellow,green"
+    "preview": "concurrently \"npm run build\" \"npm run server:local\" -c yellow,green"
   },
   "keywords": [],
   "author": "",

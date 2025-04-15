@@ -5,23 +5,10 @@ dotenv.config();
 
 export default defineConfig({
   root: ".",
-  base: process.env.VITE_DEV == "true" ? "" : "/assets/bundle",
-  build: {
-    rollupOptions: {
-      input: "./assets/js/main.js",
-      output: {
-        entryFileNames: "[name]-[hash].js",
-        assetFileNames: "[name]-[hash][extname]",
-      },
-    },
-    manifest: true,
-    outDir: "./assets/bundle",
-    emptyOutDir: true,
-  },
   server: {
     host: "localhost",
     origin: "http://localhost:3000",
     port: 3000,
-    hot: true
-  }
+    hot: true,
+  },
 });
