@@ -24,6 +24,7 @@
 
 <body>
     <?php echo $_ENV['VITE_DEV'] ?>
+    <p>yo</p>
 </body>
 
 </html>
