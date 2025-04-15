@@ -1,4 +1,7 @@
-<?php require_once __DIR__ . '/src/helpers/index.php'; ?>
+<?php
+require_once __DIR__ . '/php/helpers/hashed-assets-url.php';
+require_once __DIR__ . '/php/helpers/vite-env.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
