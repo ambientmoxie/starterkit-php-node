@@ -2,18 +2,12 @@
 
 class SessionHelper
 {
-    public static function start(?string $customPath = null): void
+    public static function start(): void
     {
-        $defaultPath = realpath(__DIR__ . '/../../sessions');
-        $path = $customPath ?? $defaultPath;
+        // Set session lifetime to 7 days (604800 seconds)
+        ini_set('session.gc_maxlifetime', 604800);
 
-        if (!is_dir($path)) {
-            mkdir($path, 0700, true);
-        }
-
-        ini_set('session.save_path', $path);
-        ini_set('session.gc_maxlifetime', 604800); // 7 days
-
+        // Set session cookie parameters (persist across browser restarts)
         session_set_cookie_params([
             'lifetime' => 604800,
             'path' => '/',
@@ -23,6 +17,7 @@ class SessionHelper
             'samesite' => 'Lax'
         ]);
 
+        // Start session only if not already active
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -36,24 +31,17 @@ class SessionHelper
 
             // Check if PHP is using cookies to store the session ID
             if (ini_get("session.use_cookies")) {
-
-                // Get the current cookie settings (used when the session cookie was created)
                 $params = session_get_cookie_params();
 
-                // Remove the session cookie by:
-                // - Setting its name (usually "PHPSESSID")
-                // - Setting its value to an empty string
-                // - Setting its expiration time to a time in the past (so the browser deletes it)
-                // - Reusing all the original parameters (path, domain, secure, httponly)
-                //   so the browser correctly matches and removes the cookie
+                // Remove the session cookie by setting it to expire in the past
                 setcookie(
                     session_name(),        // Cookie name (e.g. "PHPSESSID")
                     '',                    // Empty value
-                    time() - 42000,        // Expire in the past → triggers deletion
-                    $params["path"],       // Must match original path
-                    $params["domain"],     // Must match original domain
-                    $params["secure"],     // Must match original secure flag
-                    $params["httponly"]    // Must match original httponly flag
+                    time() - 42000,        // Expired
+                    $params["path"],       // Match original path
+                    $params["domain"],     // Match original domain
+                    $params["secure"],     // Match original secure flag
+                    $params["httponly"]    // Match original httponly flag
                 );
             }
 
