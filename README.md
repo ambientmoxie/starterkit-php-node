@@ -21,7 +21,6 @@ To use this starter, you’ll need:
 - 📦 Simple production build output (`build/`)
 - 🔁 Hot Module Replacement (HMR) and full reload support for PHP file changes
 - 🧭 Clean URL routing: /about loads pages/about.php (no .php in the URL)
-- 🧩 Separate router.php and index.php logic for development vs production
 
 ---
 
@@ -58,47 +57,35 @@ To use this starter, you’ll need:
 1. **Install dependencies**
 
        npm install
+       composer install
 
 2. **Copy and configure your `.env` file**
 
        cp .env-example .env
 
-3. **Start local dev mode**
+3. **Available commands**
 
-       npm run dev
-
-4. **Start host mode (LAN access)**
-
-       npm run host
-
-5. **Build for production**
-
-       npm run build
-
-6. **Preview the built version locally**
-
-       npm run preview
+       npm run dev       # Start local development server
+       npm run host      # Start dev server on local network (LAN)
+       npm run build     # Build for production
+       npm run preview   # Preview the production build locally
 
 ---
 
 ## 5 – Routing Logic
 
-### `router.php` (development only)
-
-Used with PHP’s built-in server. Serves static files if they exist, otherwise forwards the request to `index.php`.
-
-Examples:
-- `/build/bundle/main.js` → served directly  
-- `/contact` → forwarded to `index.php`
-
-### `index.php` (dev and production)
-
-Parses the URL and loads the matching file from `pages/`. If not found, loads `pages/404.php`.
+To create a new page, simply add a `.php` file inside the `pages/` directory.  
+Each file corresponds to a clean URL, without needing `.php` in the browser.
 
 Examples:
-- `/` → `pages/home.php`  
-- `/about` → `pages/about.php`  
-- `/invalid` → `pages/404.php`
+- `pages/about.php` → accessible at `/about`
+- `pages/contact.php` → accessible at `/contact`
+- `pages/404.php` → shown automatically if the requested page doesn't exist
+
+This system works with clean URLs thanks to the `index.php` router,  
+which dynamically loads the correct page file based on the URL path.
+
+In local development, `router.php` is used to simulate the same behavior when using PHP’s built-in server.
 
 ---
 
@@ -106,10 +93,5 @@ Examples:
 
 - The `base` path in `vite.config.js` must match the public path where assets will be deployed (`/build/bundle`).
 - `router.php` ensures fonts and other static files are properly served during local preview.
-
----
-
-## 7 – Disclaimer
-
 - This is a work-in-progress starter setup and is not guaranteed to be bug-free.
 - You can use it for both personal and commercial projects. Feel free to adapt it to your needs.
