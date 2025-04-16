@@ -5,7 +5,7 @@ require_once __DIR__ . "/../templates/header.php";
 
 <body>
     <?php echo $_ENV['VITE_DEV'] ?>
-    <p>PicNic by Mariel Nils. Distributed by velvetyne.fr.</p>
+    <p>Vite PHP Kit</p>
     <a href="/contact">contact</a>
 </body>
 

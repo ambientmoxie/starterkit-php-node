@@ -1,1 +1,1 @@
-<header>My header</header>
+<header>header</header>
