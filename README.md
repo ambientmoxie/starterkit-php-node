@@ -1,5 +1,7 @@
 # PHP + Vite Starter Kit
 
+![logo-vite-php](https://github.com/user-attachments/assets/096f7c33-46af-4c54-bf2f-8d7a641fb2a4)
+
 A lightweight PHP/Node setup using Vite for modern front-end tooling and a PHP backend with environment flexibility (local, host, and build modes).
 
 ---
