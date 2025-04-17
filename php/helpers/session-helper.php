@@ -4,6 +4,17 @@ class SessionHelper
 {
     public static function start(): void
     {
+
+        // Set relative path to directotry
+        $sessionPath = __DIR__ . "/../../sessions";
+
+        // Check if exist, create if not
+        if (!is_dir($sessionPath)) {
+            mkdir($sessionPath, 0777, false);
+        }
+
+        session_save_path($sessionPath);
+
         // Set session lifetime to 7 days (604800 seconds)
         ini_set('session.gc_maxlifetime', 604800);
 
