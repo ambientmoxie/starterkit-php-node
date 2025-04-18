@@ -23,6 +23,7 @@ To use this starter, you’ll need:
 - 📦 Simple production build output (`build/`)
 - 🔁 Hot Module Replacement (HMR) and full reload support for PHP file changes
 - 🧭 Clean URL routing: /about loads pages/about.php (no .php in the URL)
+- 🗂️ Custom session handler to ensure consistent session storage on shared hosting 
 
 ---
 
