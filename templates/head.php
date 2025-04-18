@@ -9,7 +9,7 @@ require_once __DIR__ . '/../php/helpers/vite-env.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banner Preview Page</title>
+    <title>VITE PHP KIT</title>
     <?php if ($_ENV['VITE_ENV_MODE'] === "dev"): ?>
         <!-- Include Vite dev server for HMR -->
         <script type="module" src="http://localhost:3000/@vite/client"></script>
