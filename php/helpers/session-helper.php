@@ -92,8 +92,7 @@ class SessionHelper
         session_set_cookie_params([
             'lifetime' => 604800,
             'path' => '/',
-            'domain' => $_SERVER['HTTP_HOST'],
-            'secure' => isset($_SERVER['HTTPS']),
+            'secure' => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on',
             'httponly' => true,
             'samesite' => 'Lax'
         ]);
