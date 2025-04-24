@@ -23,7 +23,7 @@ class CustomSession implements SessionHandlerInterface
     {
 
         $this->path = $path . '/sess_';
-        
+
         if (! is_dir($path)) {
             mkdir($path, 0777);
             return is_dir($path);
@@ -80,25 +80,25 @@ class SessionHelper
     public static function start(): void
     {
 
-        // modifie le mécanisme de session PHP
-        session_set_save_handler(new CustomSession(), true);
-
-        session_save_path(__DIR__ . "/../../sessions");
-
-        // Set session lifetime to 7 days (604800 seconds)
-        ini_set('session.gc_maxlifetime', 604800);
-
-        // Set session cookie parameters (persist across browser restarts)
-        session_set_cookie_params([
-            'lifetime' => 604800,
-            'path' => '/',
-            'secure' => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on',
-            'httponly' => true,
-            'samesite' => 'Lax'
-        ]);
-
         // Start session only if not already active
         if (session_status() === PHP_SESSION_NONE) {
+            // modifie le mécanisme de session PHP
+            session_set_save_handler(new CustomSession(), true);
+
+            session_save_path(__DIR__ . "/../../sessions");
+
+            // Set session lifetime to 7 days (604800 seconds)
+            ini_set('session.gc_maxlifetime', 604800);
+
+            // Set session cookie parameters (persist across browser restarts)
+            session_set_cookie_params([
+                'lifetime' => 604800,
+                'path' => '/',
+                'secure' => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on',
+                'httponly' => true,
+                'samesite' => 'Lax'
+            ]);
+
             session_start();
         }
     }
