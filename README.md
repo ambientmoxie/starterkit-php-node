@@ -96,5 +96,6 @@ In local development, `router.php` is used to simulate the same behavior when us
 
 - The `base` path in `vite.config.js` must match the public path where assets will be deployed (`/build/bundle`).
 - `router.php` ensures fonts and other static files are properly served during local preview.
+- Use `VITE_ROOT` environment variable if your project needs to be nested inside a subfolder instead of the root.
 - This is a work-in-progress starter setup and is not guaranteed to be bug-free.
 - You can use it for both personal and commercial projects. Feel free to adapt it to your needs.
