@@ -10,7 +10,7 @@ const isHost = process.env.VITE_ENV_MODE === "host";
 
 export default defineConfig({
   // Set base path for built assets (used in production)
-  base: isDev || isHost ? "" : "/build/bundle",
+  base: isDev || isHost ? "" : `${process.env.VITE_ROOT}/build/bundle`,
 
   server: {
     // Use local IP if host mode, else localhost

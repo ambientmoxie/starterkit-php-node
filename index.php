@@ -1,4 +1,11 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Get deployment folder from .env file.
+// This allows us to host the application inside a subfolder without breaking any logic.
+$basePath = $_ENV['VITE_ROOT'];
 
 // Example: user visits http://localhost:8888/contact
 // $_SERVER['REQUEST_URI'] = "/contact"
@@ -6,6 +13,11 @@
 // Extract the path from the URL (e.g. "/contact", "/about", "/")
 // Result: "/contact"
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+// Strip the base path
+if (strpos($uri, $basePath) === 0) {
+  $uri = substr($uri, strlen($basePath));
+}
 
 // Clean the path by removing any leading/trailing slashes
 // "/contact/" becomes "contact", "/" becomes ""
